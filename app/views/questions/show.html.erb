@@ -1,0 +1,23 @@
+<% require 'pry' %>
+<p>
+  <h1>Question:</h1>
+  <%= @question.title %>
+  <%= @question.description %>
+</p>
+
+<h2>Submit Answer: </h2>
+<ul>
+  <% @answers.each do |answer| %>
+    <li><%=answer.description%></li>
+    <% end %>
+
+<%= form_for ([@question, @answer]) do |f| %>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
